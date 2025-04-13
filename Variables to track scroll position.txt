@@ -1,0 +1,19 @@
+  // Variables to track scroll position
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        
+        // Function to handle scroll event
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // When scrolling down
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.classList.add('navbar-hidden');
+            } 
+            // When scrolling up
+            else if (scrollTop < lastScrollTop && scrollTop > 100) {
+                navbar.classList.remove('navbar-hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
