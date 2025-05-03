@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Dreams Consolidated - Management</title>
+    <link rel="stylesheet" href="../css/managment.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Stoke:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-space">
+            <img src="../Pictures/logo without background.png" alt="Dreams Consolidated Logo">
+        </div>
+        <ul class="nav-links roboto-serif">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./aboutus.html">About Us</a></li>
+            <li><a href="./whatwedo.html">What We Do</a></li>
+            <li><a href="./clients.html">Clients</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./Managment.html">The Management</a></li>
+        </ul>
+        <button class="mobile-toggle">☰</button>
+    </nav>
+
+    <!-- Management Team Section -->
+    <section class="management-section">
+        <div class="title-container">
+            <h1 class="section-title roboto-serif">THE MANAGMENT</h1>
+            <div class="title-line"></div>
+        </div>
+        
+        <div class="management-container">
+            <!-- Management Card 1 -->
+            <div class="management-card">
+                <div class="management-image">
+                    <img src="../Pictures/The Managment/Carroll's - 2.jpg" alt="Carroll Zenitha">
+                </div>
+                <div class="management-info">
+                    <h3 class="management-name roboto-serif">Carroll Zenitha Buultjens Jayatilleke</h3>
+                    <div class="title-divider"></div>
+                    <p class="management-title roboto-serif">Chief Executive Officer</p>
+                </div>
+            </div>
+            
+            <!-- Management Card 2 -->
+            <div class="management-card">
+                <div class="management-image">
+                    <img src="../Pictures/The Managment/Dilhan.jpeg" alt="Dr. Dilhan Sampath">
+                </div>
+                <div class="management-info">
+                    <h3 class="management-name roboto-serif">Dr. Dilhan Sampath Jayatilleke</h3>
+                    <div class="title-divider"></div>
+                    <p class="management-title roboto-serif">Chief Operating Officer</p>
+                </div>
+            </div>
+            
+            <!-- Management Card 3 -->
+            <div class="management-card">
+                <div class="management-image">
+                    <img src="../Pictures/The Managment/WhatsApp Image 2025-04-30 at 19.48.47_4a2a424e.jpg" alt="Steve Joseph">
+                </div>
+                <div class="management-info">
+                    <h3 class="management-name roboto-serif">Steve Joseph</h3>
+                    <div class="title-divider"></div>
+                    <p class="management-title roboto-serif">Manager – Business Development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Left Section - Logo and Tagline -->
+            <div class="footer-left">
+                <img src="../Pictures/logo without background.png" alt="Dreams Consolidated Logo" class="footer-logo">
+                <p class="footer-tagline roboto-serif">
+                    We have the dedication and passion to provide the demanding uniqueness that anyone would experience in a lifetime.
+                </p>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Middle Section - Location Info -->
+            <div class="footer-middle">
+                <h3 class="footer-heading roboto-serif">LOCATION:</h3>
+                <p class="footer-info roboto-serif">
+                    133 / 5 / 1, Police Lane,<br>
+                    Tewatte Road, Ragama,<br>
+                    Gampaha District, Western<br>
+                    Province, Sri Lanka. 11010
+                </p>
+                
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <p class="footer-info roboto-serif">
+                        <i class="fa fa-envelope"></i> info@dreamsconsolidated.com
+                    </p>
+                    <p class="footer-info roboto-serif">
+                        <i class="fa fa-phone"></i> +94-7896567
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Section - Menu -->
+            <div class="footer-right">
+                <h3 class="footer-heading roboto-serif">MENU:</h3>
+                <ul class="footer-menu roboto-serif">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./aboutus.html">About Us</a></li>
+                    <li><a href="./whatwedo.html">What We Do</a></li>
+                    <li><a href="./clients.html">Clients</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./Managment.html">The Managment</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Section with Privacy Policy and Terms -->
+        <div class="footer-bottom">
+            <div class="footer-links roboto-serif">
+                <a href="#">PRIVACY POLICY</a>
+                <a href="#">OUR TERMS</a>
+            </div>
+            <p class="footer-credit roboto-serif">DESIGNED BY R.LITHUSAN</p>
+        </div>
+
+        <!-- FontAwesome script tag -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    </footer>
+    
+    <!-- JavaScript for mobile navigation -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        // Toggle menu on mobile
+        mobileToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close menu when clicking a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('show');
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('show');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

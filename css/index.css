@@ -13,7 +13,7 @@ html, body {
 .navbar {
     position: static;
 
-    background-color: #eacece;
+    background-color: black;
     color:"white";
     /*z-index: 999*/ /* make sure it's on top */
     display: flex;
@@ -57,7 +57,7 @@ html, body {
 }
 
 .nav-links a {
-    color: black ;
+    color: white;
     text-decoration: none;
     font-size: 18px;
     transition: 0.3s;
