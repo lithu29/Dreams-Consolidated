@@ -20,8 +20,9 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
-  width: calc(100% - 40px);
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 .logo-space {
@@ -60,21 +61,15 @@ html, body {
   opacity: 0.8;
 }
 
-.mobile-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #000000;
-  font-size: 24px;
-  cursor: pointer;
-}
+
 
 /* Management section styles */
 .management-section {
   padding: 40px 20px;
   background-color: #e6e6e6;
-  width: calc(100% - 40px);
+  width: 100%;
   min-height: calc(100vh - 90px);
+  box-sizing: border-box;
 }
 
 .title-container {
@@ -354,6 +349,17 @@ html, body {
   font-weight: 300;
 }
 
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color:  white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 5px;
+}
+
 /* Responsive styles */
 @media (max-width: 1200px) {
   .management-container {
@@ -383,28 +389,43 @@ html, body {
 
 @media (max-width: 768px) {
   /* Navbar adjustments for mobile */
+  /* Navbar adjustments for mobile */
   .navbar {
     padding: 15px;
-    width: calc(100% - 30px);
+    width: 100%;
+    flex-direction: row;
     position: relative;
   }
   
+  .logo-space {
+    margin-bottom: 0;
+  }
   .mobile-toggle {
-    display: block;
+    display:block ;
   }
   
   .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 10px 0;
-    text-align: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
   }
   
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
   .nav-links.show {
     display: flex;
   }
@@ -430,7 +451,7 @@ html, body {
 @media (max-width: 576px) {
   .navbar {
     padding: 10px;
-    width: calc(100% - 20px);
+    width: 100%;
   }
   
   .nav-links li {

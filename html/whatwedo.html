@@ -23,7 +23,6 @@
             <li><a href="./gallery.html">Gallery</a></li>
             <li><a href="./Managment.html">The Managment</a></li>
         </ul>
-        <button class="mobile-toggle">☰</button>
     </nav>
 
     <section id="hero">
@@ -295,20 +294,20 @@
             </div>
             <p class="footer-credit roboto-serif">DESIGNED BY R.LITHUSAN</p>
         </div>
-
+    </footer>
         <!-- FontAwesome script tag if you don't already have it -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    </footer>
+   
 
-    <!-- Add this script before the closing body tag -->
-    <script>
-    // Function to handle scroll event
+       <!-- Add this script before the closing body tag -->
+       <script>
+        // Function to handle scroll event
     document.addEventListener('DOMContentLoaded', function() {
         const navbar = document.querySelector('.navbar');
         console.log("Navbar element:", navbar); // Debug to check if navbar is found
-
+        
         let lastScrollTop = 0;
-
+        
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             console.log("Scrolling, current position:", scrollTop); // Debug to check if scroll event fires
@@ -327,40 +326,49 @@
             lastScrollTop = scrollTop;
         });
     });
-        
-    // Function to handle the navigation on small screens
-    document.addEventListener('DOMContentLoaded', function() {
-        function setupMobileNav() {
-            const navLinks = document.querySelector('.nav-links');
-            const logoSpace = document.querySelector('.logo-space');
             
-            // Only set up mobile menu if screen width is below 768px
-            if (window.innerWidth <= 768) {
-                // Create a mobile menu toggle button if it doesn't exist
-                if (!document.querySelector('.mobile-toggle')) {
-                    const toggleButton = document.createElement('button');
-                    toggleButton.className = 'mobile-toggle';
-                    toggleButton.innerHTML = '☰';
-                    logoSpace.after(toggleButton);
-                    
-                    // Add click event to toggle menu
-                    toggleButton.addEventListener('click', function() {
-                        navLinks.classList.toggle('show');
-                    });
-                }
-            } else {
-                // Remove mobile menu elements if screen is larger
-                const toggleButton = document.querySelector('.mobile-toggle');
-                if (toggleButton) {
-                    toggleButton.remove();
-                }
-                navLinks.classList.remove('show');
-            }
-        }
+            // Function to handle the navigation on small screens
+            document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelector('.nav-links');
+        const logoSpace = document.querySelector('.logo-space');
         
-        // Run on load and resize
-        setupMobileNav();
-        window.addEventListener('resize', setupMobileNav);
+        // Create mobile toggle button
+        const toggleButton = document.createElement('button');
+        toggleButton.className = 'mobile-toggle';
+        toggleButton.innerHTML = '☰';
+        toggleButton.setAttribute('aria-label', 'Toggle navigation menu');
+        logoSpace.after(toggleButton);
+        
+        // Add click event to toggle menu
+        toggleButton.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Change icon
+            if (navLinks.classList.contains('active')) {
+                toggleButton.innerHTML = '✕';
+            } else {
+                toggleButton.innerHTML = '☰';
+            }
+        });
+        
+        // Close menu when clicking on nav links (mobile)
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                toggleButton.innerHTML = '☰';
+            }
+        });
+        
+        // Close menu when clicking outside (mobile)
+        document.addEventListener('click', function(e) {
+            const navbar = document.querySelector('.navbar');
+            if (window.innerWidth <= 768 && 
+                !navbar.contains(e.target) && 
+                navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                toggleButton.innerHTML = '☰';
+            }
+        });
     });
     </script>
 </body>

@@ -279,68 +279,84 @@
         </div>
         <p class="footer-credit roboto-serif">DESIGNED BY R.LITHUSAN</p>
     </div>
+</footer>
 
     <!-- FontAwesome script tag if you don't already have it -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-</footer>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const slides = document.querySelectorAll('.mission-slide');
-        const dots = document.querySelectorAll('.dot');
-        const prevArrow = document.querySelector('.prev-arrow');
-        const nextArrow = document.querySelector('.next-arrow');
-        let currentSlide = 0;
-        const totalSlides = slides.length;
+ <!-- Add this script before the closing body tag -->
+ <script>
+    // Function to handle scroll event
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    console.log("Navbar element:", navbar); // Debug to check if navbar is found
     
-        // Initialize first slide
-        slides[0].classList.add('active');
-        dots[0].classList.add('active');
+    let lastScrollTop = 0;
     
-        // Function to change slide
-        function goToSlide(index) {
-            // Remove active class from all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Add active class to current slide and dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            
-            // Update current slide index
-            currentSlide = index;
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        console.log("Scrolling, current position:", scrollTop); // Debug to check if scroll event fires
+        
+        // When scrolling down
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            console.log("Hiding navbar"); // Debug
+            navbar.classList.add('navbar-hidden');
+        } 
+        // When scrolling up
+        else if (scrollTop < lastScrollTop && scrollTop > 100) {
+            console.log("Showing navbar"); // Debug
+            navbar.classList.remove('navbar-hidden');
         }
-    
-        // Next slide function
-        function nextSlide() {
-            const newIndex = (currentSlide + 1) % totalSlides;
-            goToSlide(newIndex);
-        }
-    
-        // Previous slide function
-        function prevSlide() {
-            const newIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-            goToSlide(newIndex);
-        }
-    
-        // Event listeners for arrows
-        nextArrow.addEventListener('click', nextSlide);
-        prevArrow.addEventListener('click', prevSlide);
-    
-        // Event listeners for dots
-        dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-                const slideIndex = parseInt(this.getAttribute('data-index'));
-                goToSlide(slideIndex);
-            });
-        });
-    
-        // Auto-advance slides every 5 seconds
-        setInterval(nextSlide, 5000);
+        
+        lastScrollTop = scrollTop;
     });
+});
+        
+        // Function to handle the navigation on small screens
+        document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelector('.nav-links');
+    const logoSpace = document.querySelector('.logo-space');
+    
+    // Create mobile toggle button
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'mobile-toggle';
+    toggleButton.innerHTML = '☰';
+    toggleButton.setAttribute('aria-label', 'Toggle navigation menu');
+    logoSpace.after(toggleButton);
+    
+    // Add click event to toggle menu
+    toggleButton.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        
+        // Change icon
+        if (navLinks.classList.contains('active')) {
+            toggleButton.innerHTML = '✕';
+        } else {
+            toggleButton.innerHTML = '☰';
+        }
+    });
+    
+    // Close menu when clicking on nav links (mobile)
+    navLinks.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+            toggleButton.innerHTML = '☰';
+        }
+    });
+    
+    // Close menu when clicking outside (mobile)
+    document.addEventListener('click', function(e) {
+        const navbar = document.querySelector('.navbar');
+        if (window.innerWidth <= 768 && 
+            !navbar.contains(e.target) && 
+            navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            toggleButton.innerHTML = '☰';
+        }
+    });
+});
+    
     </script>
-
-
 </body>
 </html>

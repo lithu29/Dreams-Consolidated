@@ -283,38 +283,47 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Function to handle the navigation on small screens
         document.addEventListener('DOMContentLoaded', function() {
-            function setupMobileNav() {
-                const navLinks = document.querySelector('.nav-links');
-                const logoSpace = document.querySelector('.logo-space');
-                
-                // Only set up mobile menu if screen width is below 768px
-                if (window.innerWidth <= 768) {
-                    // Create a mobile menu toggle button if it doesn't exist
-                    if (!document.querySelector('.mobile-toggle')) {
-                        const toggleButton = document.createElement('button');
-                        toggleButton.className = 'mobile-toggle';
-                        toggleButton.innerHTML = '☰';
-                        logoSpace.after(toggleButton);
-                        
-                        // Add click event to toggle menu
-                        toggleButton.addEventListener('click', function() {
-                            navLinks.classList.toggle('show');
-                        });
-                    }
-                } else {
-                    // Remove mobile menu elements if screen is larger
-                    const toggleButton = document.querySelector('.mobile-toggle');
-                    if (toggleButton) {
-                        toggleButton.remove();
-                    }
-                    navLinks.classList.remove('show');
-                }
-            }
-            
-            // Run on load and resize
-            setupMobileNav();
-            window.addEventListener('resize', setupMobileNav);
-        });
+    const navLinks = document.querySelector('.nav-links');
+    const logoSpace = document.querySelector('.logo-space');
+    
+    // Create mobile toggle button
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'mobile-toggle';
+    toggleButton.innerHTML = '☰';
+    toggleButton.setAttribute('aria-label', 'Toggle navigation menu');
+    logoSpace.after(toggleButton);
+    
+    // Add click event to toggle menu
+    toggleButton.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        
+        // Change icon
+        if (navLinks.classList.contains('active')) {
+            toggleButton.innerHTML = '✕';
+        } else {
+            toggleButton.innerHTML = '☰';
+        }
+    });
+    
+    // Close menu when clicking on nav links (mobile)
+    navLinks.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' && window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+            toggleButton.innerHTML = '☰';
+        }
+    });
+    
+    // Close menu when clicking outside (mobile)
+    document.addEventListener('click', function(e) {
+        const navbar = document.querySelector('.navbar');
+        if (window.innerWidth <= 768 && 
+            !navbar.contains(e.target) && 
+            navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            toggleButton.innerHTML = '☰';
+        }
+    });
+});
     </script>
 </body>
 </html>

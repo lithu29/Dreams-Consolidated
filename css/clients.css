@@ -406,7 +406,8 @@ margin: 0;
   .navbar {
     padding: 15px;
     width: calc(100% - 30px);
-    flex-direction: row; /* Keep horizontal layout for logo and toggle */
+    flex-direction: row;
+    position: relative;
   }
   
   .logo-space {
@@ -414,17 +415,26 @@ margin: 0;
   }
   
   .nav-links {
-    display: none; /* Hide by default on mobile */
-    flex-direction: column;
-    width: 100%;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 10px 0;
-    text-align: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
   }
   
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
   .nav-links.show {
     display: flex; /* Show when toggled */
   }
