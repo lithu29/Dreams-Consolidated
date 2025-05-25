@@ -9,19 +9,19 @@ html, body {
 
 /* Navbar styles */
 .navbar {
-position: static;
-
-background-color: black;
-color:"white";
-/*z-index: 999*/ /* make sure it's on top */
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 5px 5px;
-width: 100%;
-transition: transform 0.3s ease-in-out;
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+  position: static;
+  background-color: black;
+  color:"white";
+  /*z-index: 999*/ /* make sure it's on top */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  }
 
 /* New class for hiding navbar */
 .navbar-hidden {
@@ -405,9 +405,10 @@ margin: 0;
   /* Navbar adjustments for mobile */
   .navbar {
     padding: 15px;
-    width: calc(100% - 30px);
+    width: 100%;
     flex-direction: row;
     position: relative;
+    box-sizing: border-box;
   }
   
   .logo-space {
@@ -485,7 +486,8 @@ margin: 0;
   /* Navbar becomes a menu button */
   .navbar {
     padding: 10px;
-    width: calc(100% - 20px);
+    width: 100%;
+    box-sizing: border-box;
   }
   
   /* For now, let's make the existing menu more compact */
