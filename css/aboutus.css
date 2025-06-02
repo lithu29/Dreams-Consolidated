@@ -961,12 +961,13 @@ h1 {
   .skills-list li::before {
     width: 20px;
     height: 20px;
-  }
-  
-  .skills-list li::after {
-    left: 10px;
+}
+
+.skills-list li::after {
+    left: 9px; /* Changed from 10px to 9px to center on 20px circle */
+    top: calc(50% + 10px); /* Changed from 12.5px to 10px to match smaller circle */
     height: 30px;
-  }
+}
 
   .vision-boxes {
     flex-direction: column;
@@ -1128,13 +1129,16 @@ h1 {
     font-size: 1.5rem;
   }
   
-  /* About section - maintain the image float but reduce size */
   .image-container {
-    max-width: 150px;
+    float: right;
+    max-width: 120px;
     margin-left: 10px;
     margin-bottom: 10px;
   }
   
+  .company-name {
+    margin-right: 135px; /* Space for the smaller image */
+  }
   .company-name {
     font-size: 1.5rem;
   }
@@ -1212,14 +1216,21 @@ h1 {
   }
   
   .image-container {
-    float: none;
-    margin: 0 auto 15px;
-    max-width: 100%;
-    width: 250px;
+    float: right;
+    margin: 0 0 15px 15px;
+    max-width: 150px;
+    width: 150px;
   }
   
-  .company-name, .company-description, .company-description-2 {
-    text-align: center;
+  .company-name {
+    text-align: left;
+    margin-right: 170px; /* Space for the image */
+    font-size: 1.3rem;
+  }
+  
+  .company-description, .company-description-2 {
+    text-align: left;
+    clear: both; /* This will make these paragraphs appear below the image */
   }
 
   .dedication-banner {
